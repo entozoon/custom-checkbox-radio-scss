@@ -5,18 +5,20 @@ $checkbox-margin: .5rem !default;
 $checkbox-bg: none !default;
 $checkbox-cursor: pointer !default;
 $checkbox-fa: '\f00c' !default;
-$checkbox-fa-fz: 12px !default;
-$checkbox-fa-margin: 1px 1px 0 !default;
+$checkbox-fa-fz: 18px !default;
+$checkbox-fa-margin: 2px 2px 0 !default;
+$checkbox-fa-color: inherit !default;
 
 $radio-border: $checkbox-border !default;
-$radio-radius: $checkbox-radius !default;
+$radio-radius: 50% !default;
 $radio-size: $checkbox-size !default;
 $radio-margin: $checkbox-margin !default;
 $radio-bg: $checkbox-bg !default;
 $radio-cursor: $checkbox-cursor !default;
 $radio-fa: '\f111' !default;
-$radio-fa-fz: 8px !default;
-$radio-fa-margin: 3px 3px 0 !default;
+$radio-fa-fz: 12px !default;
+$radio-fa-margin: 5px 6px 0 !default;
+$radio-fa-color: inherit !default;
 
 @mixin checkbox-or-radio(
   $border,
@@ -27,7 +29,8 @@ $radio-fa-margin: 3px 3px 0 !default;
   $cursor,
   $fa,
   $fa-fz,
-  $fa-margin
+  $fa-margin,
+  $fa-color
 ) {
   position: absolute;
   left: -9999px;
@@ -38,6 +41,7 @@ $radio-fa-margin: 3px 3px 0 !default;
     font-weight: normal;
     text-transform: none;
     cursor: $cursor;
+    user-select: none;
     &::before,
     &::after {
       position: absolute;
@@ -55,12 +59,14 @@ $radio-fa-margin: 3px 3px 0 !default;
       border-radius: $radius;
     }
     &::after {
+      margin: $fa-margin;
       font: normal normal normal 14px/1 FontAwesome;
       font-size: $fa-fz;
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
+      line-height: 1;
+      color: $fa-color;
       text-rendering: auto;
-      margin: $fa-margin;
     }
   }
   &:checked + label::after {
@@ -82,7 +88,9 @@ $radio-fa-margin: 3px 3px 0 !default;
     $bg: $checkbox-bg,
     $cursor: $checkbox-cursor,
     $fa: $checkbox-fa,
-    $fa-fz: $checkbox-fz
+    $fa-fz: $checkbox-fa-fz,
+    $fa-margin: $checkbox-fa-margin,
+    $fa-color: $checkbox-fa-color
   );
 }
 
@@ -96,6 +104,8 @@ $radio-fa-margin: 3px 3px 0 !default;
     $bg: $radio-bg,
     $cursor: $radio-cursor,
     $fa: $radio-fa,
-    $fa-fz: $radio-fz
+    $fa-fz: $radio-fa-fz,
+    $fa-margin: $radio-fa-margin,
+    $fa-color: $radio-fa-color
   );
 }
