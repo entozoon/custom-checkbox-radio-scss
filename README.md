@@ -2,6 +2,8 @@
 
 Sass based custom checkboxes and radios; a css-only solution.
 
+![Swanky](posterity/custom-checkbox-radio.gif)
+
 ## Install
 
     npm i --save custom-checkbox-radio-scss
@@ -32,12 +34,12 @@ Note, your labels must proceed the inputs and all have suitable name/id/for attr
     <fieldset>
       <legend>Radios</legend>
       <p class="radio">
-        <input type="radio" name="ipsum" id="ipsum-1">
+        <input type="radio" name="ipsum" id="ipsum-1" checked>
         <label for="ipsum-1">Lorem</label>
       </p>
       <p class="radio">
         <input type="radio" name="ipsum" id="ipsum-2">
-        <label for="ipsum-2">Lorem</label>
+        <label for="ipsum-2">Ipsum</label>
       </p>
     </fieldset>
 
