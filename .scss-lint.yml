@@ -1,0 +1,39 @@
+# SCSS Linter configuration and overrides
+# (some of the rules are too.. evangelical)
+#
+linters:
+  # Allow /* */ style comments because they're legit
+  Comment:
+    enabled: false
+
+  # Spaces - 2
+  Indentation:
+    enabled: true
+    character: space
+    width: 2
+
+  # Property sort order - recess (twitter / bootstrap style)
+  PropertySortOrder:
+    order: recess
+
+  # Allow !important as we use it to override javascript responsively
+  ImportantRule:
+    enabled: false
+
+  # Allow empty lines between { } for brevity
+  EmptyLineBetweenBlocks:
+    enabled: false
+
+  # Allow color keywords and literals because they're legit
+  ColorKeyword:
+    enabled: false
+  ColorVariable:
+    enabled: false
+
+  SingleLinePerSelector:
+    enabled: false
+
+  # Increase nesting depth to allow pseudo elements, navs and stuff
+  NestingDepth:
+    enabled: true
+    max_depth: 4
