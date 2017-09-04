@@ -15,20 +15,29 @@ Depending on your current directory and frontend stack, you'll want something al
 
 ## Integrate
 
+Note, your labels must proceed the inputs and all have suitable name/id/for attributes.
+
     <fieldset>
       <legend>Checkboxes</legend>
       <p class="checkbox">
-        <input type="checkbox"><label>Lorem</label>
+        <input type="checkbox" name="lorem-1" id="lorem-1">
+        <label for="lorem-1">Lorem</label>
       </p>
       <p class="checkbox">
-        <input type="checkbox"><label>Ipsum</label>
+        <input type="checkbox" name="lorem-2" id="lorem-2">
+        <label for="lorem-2">Ipsum</label>
       </p>
     </fieldset>
 
     <fieldset>
       <legend>Radios</legend>
       <p class="radio">
-        <label>Lorem</label><input type="radio" name="lorem">
+        <input type="radio" name="ipsum" id="ipsum-1">
+        <label for="ipsum-1">Lorem</label>
+      </p>
+      <p class="radio">
+        <input type="radio" name="ipsum" id="ipsum-2">
+        <label for="ipsum-2">Lorem</label>
       </p>
     </fieldset>
 
