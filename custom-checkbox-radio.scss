@@ -36,7 +36,7 @@ $radio-fa-color: inherit !default;
   left: -9999px;
   + label {
     position: relative;
-    display: inline;
+    display: inline-block;
     padding-left: $size + $margin;
     font-weight: normal;
     text-transform: none;
