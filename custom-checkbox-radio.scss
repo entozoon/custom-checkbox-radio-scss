@@ -1,1 +1,73 @@
+$checkbox-border: 1px solid #666 !default;
+$checkbox-radius: 2px !default;
+$checkbox-size: 2rem !default;
+$checkbox-margin: .5rem !default;
+$checkbox-bg: white !default;
 
+$radio-border: $checkbox-border !default;
+$radio-radius: $checkbox-radius !default;
+$radio-size: $checkbox-size !default;
+$radio-margin: $checkbox-margin !default;
+$radio-bg: white !default;
+
+@mixin checkbox-or-radio(
+  $border,
+  $radius,
+  $size,
+  $margin,
+  $bg
+) {
+  position: absolute;
+  left: -9999px;
+  + label {
+    position: relative;
+    display: inline;
+    font-weight: normal;
+    text-transform: none;
+    &::before {
+      display: inline-block;
+      width: $size;
+      height: $size;
+      margin-right: $margin;
+      vertical-align: middle;
+      background: $bg;
+      border: $border;
+      border-radius: $radius;
+      content: '';
+    }
+  }
+}
+
+.radio,
+.checkbox {
+  display: inline-block;
+}
+
+.checkbox input[type=checkbox] {
+  @include checkbox-or-radio(
+    $border: $checkbox-border,
+    $radius: $checkbox-radius,
+    $size: $checkbox-size,
+    $margin: $checkbox-margin,
+    $bg: $checkbox-bg
+  );
+  &:checked + label {
+    &::before {
+    }
+  }
+}
+
+.radio input[type=radio] {
+  // Same as a checkbox but, well, round.
+  @include checkbox-or-radio(
+    $border: $radio-border,
+    $radius: $radio-radius,
+    $size: $radio-size,
+    $margin: $radio-margin,
+    $bg: $radio-bg
+  );
+  &:checked + label {
+    &::before {
+    }
+  }
+}
