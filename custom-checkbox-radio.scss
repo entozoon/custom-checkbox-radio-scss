@@ -2,39 +2,69 @@ $checkbox-border: 1px solid #666 !default;
 $checkbox-radius: 2px !default;
 $checkbox-size: 2rem !default;
 $checkbox-margin: .5rem !default;
-$checkbox-bg: white !default;
+$checkbox-bg: none !default;
+$checkbox-cursor: pointer !default;
+$checkbox-fa: '\f00c' !default;
+$checkbox-fa-fz: 12px !default;
+$checkbox-fa-margin: 1px 1px 0 !default;
 
 $radio-border: $checkbox-border !default;
 $radio-radius: $checkbox-radius !default;
 $radio-size: $checkbox-size !default;
 $radio-margin: $checkbox-margin !default;
-$radio-bg: white !default;
+$radio-bg: $checkbox-bg !default;
+$radio-cursor: $checkbox-cursor !default;
+$radio-fa: '\f111' !default;
+$radio-fa-fz: 8px !default;
+$radio-fa-margin: 3px 3px 0 !default;
 
 @mixin checkbox-or-radio(
   $border,
   $radius,
   $size,
   $margin,
-  $bg
+  $bg,
+  $cursor,
+  $fa,
+  $fa-fz,
+  $fa-margin
 ) {
   position: absolute;
   left: -9999px;
   + label {
     position: relative;
     display: inline;
+    padding-left: $size + $margin;
     font-weight: normal;
     text-transform: none;
+    cursor: $cursor;
+    &::before,
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      content: '';
+    }
     &::before {
-      display: inline-block;
       width: $size;
       height: $size;
-      margin-right: $margin;
       vertical-align: middle;
       background: $bg;
       border: $border;
       border-radius: $radius;
-      content: '';
     }
+    &::after {
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: $fa-fz;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: auto;
+      margin: $fa-margin;
+    }
+  }
+  &:checked + label::after {
+    content: $fa;
   }
 }
 
@@ -49,12 +79,11 @@ $radio-bg: white !default;
     $radius: $checkbox-radius,
     $size: $checkbox-size,
     $margin: $checkbox-margin,
-    $bg: $checkbox-bg
+    $bg: $checkbox-bg,
+    $cursor: $checkbox-cursor,
+    $fa: $checkbox-fa,
+    $fa-fz: $checkbox-fz
   );
-  &:checked + label {
-    &::before {
-    }
-  }
 }
 
 .radio input[type=radio] {
@@ -64,10 +93,9 @@ $radio-bg: white !default;
     $radius: $radio-radius,
     $size: $radio-size,
     $margin: $radio-margin,
-    $bg: $radio-bg
+    $bg: $radio-bg,
+    $cursor: $radio-cursor,
+    $fa: $radio-fa,
+    $fa-fz: $radio-fz
   );
-  &:checked + label {
-    &::before {
-    }
-  }
 }
