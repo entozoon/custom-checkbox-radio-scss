@@ -1,13 +1,14 @@
 $checkbox-border: 1px solid #666 !default;
 $checkbox-radius: 2px !default;
 $checkbox-size: 2rem !default;
-$checkbox-margin: .75rem !default;
+$checkbox-margin: 0.75rem !default;
 $checkbox-bg: none !default;
 $checkbox-cursor: pointer !default;
 $checkbox-fa: '\f00c' !default;
 $checkbox-fa-fz: 18px !default;
 $checkbox-fa-margin: 2px 2px 0 !default;
 $checkbox-fa-color: inherit !default;
+$checkbox-error-color: #c00 !default;
 
 $radio-border: $checkbox-border !default;
 $radio-radius: 50% !default;
@@ -18,7 +19,8 @@ $radio-cursor: $checkbox-cursor !default;
 $radio-fa: '\f111' !default;
 $radio-fa-fz: 12px !default;
 $radio-fa-margin: 5px 6px 0 !default;
-$radio-fa-color: inherit !default;
+$radio-fa-color: $checkbox-fa-color !default;
+$radio-error-color: $checkbox-error-color !default;
 
 @mixin checkbox-or-radio(
   $border,
@@ -30,11 +32,14 @@ $radio-fa-color: inherit !default;
   $fa,
   $fa-fz,
   $fa-margin,
-  $fa-color
+  $fa-color,
+  $error-color
 ) {
   position: absolute;
   left: -9999px;
-  + label {
+  // + label {
+  // to handle sandwiched validation elements
+  ~ label {
     position: relative;
     display: inline-block;
     padding-left: $size + $margin;
@@ -69,17 +74,18 @@ $radio-fa-color: inherit !default;
       text-rendering: auto;
     }
   }
-  &:checked + label::after {
+  &:checked ~ label::after {
     content: $fa;
   }
+  &.error ~ label::before {
+    border-color: $error-color;
+  }
 }
-
 .radio,
 .checkbox {
   display: inline-block;
 }
-
-.checkbox input[type=checkbox] {
+.checkbox input[type='checkbox'] {
   @include checkbox-or-radio(
     $border: $checkbox-border,
     $radius: $checkbox-radius,
@@ -90,11 +96,11 @@ $radio-fa-color: inherit !default;
     $fa: $checkbox-fa,
     $fa-fz: $checkbox-fa-fz,
     $fa-margin: $checkbox-fa-margin,
-    $fa-color: $checkbox-fa-color
+    $fa-color: $checkbox-fa-color,
+    $error-color: $checkbox-error-color
   );
 }
-
-.radio input[type=radio] {
+.radio input[type='radio'] {
   // Same as a checkbox but, well, round.
   @include checkbox-or-radio(
     $border: $radio-border,
@@ -106,6 +112,7 @@ $radio-fa-color: inherit !default;
     $fa: $radio-fa,
     $fa-fz: $radio-fa-fz,
     $fa-margin: $radio-fa-margin,
-    $fa-color: $radio-fa-color
+    $fa-color: $radio-fa-color,
+    $error-color: $radio-error-color
   );
 }

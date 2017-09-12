@@ -37,3 +37,7 @@ linters:
   NestingDepth:
     enabled: true
     max_depth: 4
+
+  # Allow 0.1 as well as .1 because it's perfectly fine
+  LeadingZero:
+    enabled: false
