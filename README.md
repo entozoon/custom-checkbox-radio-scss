@@ -45,8 +45,8 @@ Note, your labels must proceed the inputs and all have suitable name/id/for attr
 
 ## Interpolate
 
-Written in a non-invasive kinda way, so you can add your own styles to `legend`, `input[type="radio"]`, `checkbox::after`, and override the handful of default values set in [the sass file](https://github.com/entozoon/custom-checkbox-radio-scss/blob/master/custom-checkbox-radio.scss).
+Written in a non-invasive kinda way, so you can add your own styles to `legend`, `input[type="radio"]`, `checkbox::after`, and override the handful of default values set in [this SCSS file](https://github.com/entozoon/custom-checkbox-radio-scss/blob/master/custom-checkbox-radio.scss).
 
 ## Inherit
 
-- [Font awesome](https://github.com/FortAwesome/Font-Awesome/) (CDN is fine)
+*   [Font awesome](https://github.com/FortAwesome/Font-Awesome/) (CDN is fine)
