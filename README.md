@@ -4,7 +4,7 @@ Sass based custom checkboxes and radios; a css-only solution.
 
 ![Swanky](posterity/custom-checkbox-radio.gif)
 
-See the *[demo here](/examples/index.html)*.
+### **[Demo](https://entozoon.github.io/custom-checkbox-radio/example)**
 
 ## Install
 
