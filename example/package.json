@@ -1,0 +1,17 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm-run-all -p start:*",
+    "start:compile": "node-sass app.scss app.css -w",
+    "start:serve": "browser-sync -s -w *"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.24.6",
+    "node-sass": "^4.9.2"
+  }
+}
