@@ -4,6 +4,8 @@ Sass based custom checkboxes and radios; a css-only solution.
 
 ![Swanky](posterity/custom-checkbox-radio.gif)
 
+### **[Demo](https://entozoon.github.io/custom-checkbox-radio/example)**
+
 ## Install
 
     npm i --save custom-checkbox-radio-scss
@@ -15,7 +17,7 @@ Depending on your current directory and frontend stack, you'll want something al
     @import '../node_modules/custom-checkbox-radio-scss/custom-checkbox-radio';
     @import '~custom-checkbox-radio-scss/custom-checkbox-radio'; // (webpack 3)
 
-## Integrate
+## Add
 
 Note, your labels must proceed the inputs and all have suitable name/id/for attributes.
 
@@ -43,10 +45,10 @@ Note, your labels must proceed the inputs and all have suitable name/id/for attr
       </p>
     </fieldset>
 
-## Interpolate
+## Customise
 
-Written in a non-invasive kinda way, so you can add your own styles to `legend`, `input[type="radio"]`, `checkbox::after`, and override the handful of default values set in [this SCSS file](https://github.com/entozoon/custom-checkbox-radio-scss/blob/master/custom-checkbox-radio.scss).
+Written in a non-invasive kinda way, so you can add your own styles to, say, `input[type="radio"] + label::after`, or simply override the various variables set in [the SCSS file](https://github.com/entozoon/custom-checkbox-radio-scss/blob/master/custom-checkbox-radio.scss).
 
-## Inherit
+## Browser Support
 
-*   [Font awesome](https://github.com/FortAwesome/Font-Awesome/) (CDN is fine)
+IE9 +
