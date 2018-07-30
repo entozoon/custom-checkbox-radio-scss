@@ -1,10 +1,10 @@
-# Custom Checkbox and Radio
+# Custom Checkbox Radio SCSS
 
-Sass based custom checkboxes and radios; a css-only solution.
+SCSS based custom checkboxes and radios; a CSS-only solution.
+
+### **[View the Demo](https://entozoon.github.io/custom-checkbox-radio-scss/example)**
 
 ![Swanky](posterity/custom-checkbox-radio.gif)
-
-### **[Demo](https://entozoon.github.io/custom-checkbox-radio/example)**
 
 ## Install
 
