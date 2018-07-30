@@ -10,7 +10,7 @@ $ccr-icon-scale-radio: 55% !default;
 .radio {
   input {
     display: none;
-    + label {
+    ~ label {
       display: inline-block;
       position: relative;
       padding-left: $ccr-size * 1.75;
@@ -47,13 +47,13 @@ $ccr-icon-scale-radio: 55% !default;
         display: none;
       }
     }
-    &:checked + label::after {
+    &:checked ~ label::after {
       display: block;
     }
   }
 }
 // Checkbox-specific
-.checkbox input:checked + label {
+.checkbox input:checked ~ label {
   &::before {
     border-radius: $ccr-border-radius-checkbox;
   }
@@ -65,7 +65,7 @@ $ccr-icon-scale-radio: 55% !default;
 }
 // Radio-specific
 .radio {
-  input + label {
+  input ~ label {
     &::before {
       border-radius: 50%;
     }
