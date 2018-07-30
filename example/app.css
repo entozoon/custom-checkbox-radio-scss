@@ -1,83 +1,62 @@
-@charset "UTF-8";
-.radio,
-.checkbox {
-  display: inline-block; }
-
-.checkbox input[type="checkbox"] {
-  position: absolute;
-  left: -9999px; }
-  .checkbox input[type="checkbox"] ~ label {
+.checkbox input,
+.radio input {
+  display: none; }
+  .checkbox input + label,
+  .radio input + label {
     position: relative;
-    display: inline-block;
-    padding-left: 3rem;
-    font-weight: normal;
-    text-transform: none;
-    cursor: pointer;
-    user-select: none; }
-    .checkbox input[type="checkbox"] ~ label::before, .checkbox input[type="checkbox"] ~ label::after {
+    padding-left: 30px; }
+    .checkbox input + label::before, .checkbox input + label::after,
+    .radio input + label::before,
+    .radio input + label::after {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
       position: absolute;
-      top: 0.4rem;
       left: 0;
-      display: block;
-      content: ""; }
-    .checkbox input[type="checkbox"] ~ label::before {
-      width: 2rem;
-      height: 2rem;
-      vertical-align: middle;
-      background: none;
-      border: 1px solid #666;
-      border-radius: 2px; }
-    .checkbox input[type="checkbox"] ~ label::after {
-      margin: calc( 0.1rem + 1px);
-      font: normal normal normal 14px/1 FontAwesome;
-      font-size: 1.8rem;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      line-height: 1;
-      color: inherit;
-      text-rendering: auto; }
-  .checkbox input[type="checkbox"]:checked ~ label::after {
-    content: ""; }
-  .checkbox input[type="checkbox"].error ~ label::before {
-    border-color: #c00; }
+      top: 0; }
+    .checkbox input + label::before,
+    .radio input + label::before {
+      border: 1px solid; }
+    .checkbox input + label::after,
+    .radio input + label::after {
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      top: 2px;
+      left: 2px;
+      position: absolute;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: none; }
+  .checkbox input:checked + label::after,
+  .radio input:checked + label::after {
+    display: block; }
 
-.radio input[type="radio"] {
-  position: absolute;
-  left: -9999px; }
-  .radio input[type="radio"] ~ label {
-    position: relative;
-    display: inline-block;
-    padding-left: 3rem;
-    font-weight: normal;
-    text-transform: none;
-    cursor: pointer;
-    user-select: none; }
-    .radio input[type="radio"] ~ label::before, .radio input[type="radio"] ~ label::after {
-      position: absolute;
-      top: 0.4rem;
-      left: 0;
-      display: block;
-      content: ""; }
-    .radio input[type="radio"] ~ label::before {
-      width: 2rem;
-      height: 2rem;
-      vertical-align: middle;
-      background: none;
-      border: 1px solid #666;
-      border-radius: 50%; }
-    .radio input[type="radio"] ~ label::after {
-      margin: calc(0.3rem + 2px);
-      font: normal normal normal 14px/1 FontAwesome;
-      font-size: 1.4rem;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      line-height: 1;
-      color: inherit;
-      text-rendering: auto; }
-  .radio input[type="radio"]:checked ~ label::after {
-    content: ""; }
-  .radio input[type="radio"].error ~ label::before {
-    border-color: #c00; }
+.checkbox input:checked + label::after {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" fill="oliveDrab" /></svg>'); }
+
+.radio input + label::before {
+  border-radius: 50%; }
+
+.radio input + label::after {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="oliveDrab" /></svg>');
+  background-size: 60%; }
+
+html {
+  font-size: 62.5%; }
 
 body {
-  font-family: "verdana"; }
+  font-family: sans-serif;
+  font-size: 1rem; }
+
+.font-size--2 {
+  font-size: 1.5rem; }
+
+.font-size--3 {
+  font-size: 2rem; }
+
+.font-size--4 {
+  font-size: 3rem; }

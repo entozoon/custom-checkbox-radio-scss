@@ -1,126 +1,177 @@
-// Overrideable variables
-$checkbox-border: 1px solid #666 !default;
-$checkbox-radius: 2px !default;
-$checkbox-size: 2rem !default;
-$checkbox-offset-top: 0.4rem !default;
-$checkbox-bg: none !default;
-$checkbox-label-indent: 1rem !default;
-$checkbox-fa: "\f00c" !default;
-$checkbox-fa-size: $checkbox-size * 0.9 !default;
-$checkbox-fa-margin: calc(
-  #{($checkbox-size - $checkbox-fa-size) * 0.5} + 1px
-) !default;
-$checkbox-fa-color: inherit !default;
-$checkbox-cursor: pointer !default;
-$checkbox-error-color: #c00 !default;
+// // Overrideable variables
+// $checkbox-border: 1px solid #666 !default;
+// $checkbox-radius: 2px !default;
+// $checkbox-size: 2rem !default;
+// $checkbox-offset-top: 0.4rem !default;
+// $checkbox-bg: none !default;
+// $checkbox-label-indent: 1rem !default;
+// $checkbox-fa-size: $checkbox-size * 0.9 !default;
+// $checkbox-fa-margin: calc(
+//   #{($checkbox-size - $checkbox-fa-size) * 0.5} + 1px
+// ) !default;
+// $checkbox-fa-color: inherit !default;
+// $checkbox-cursor: pointer !default;
+// $checkbox-error-color: #c00 !default;
 
-$radio-border: $checkbox-border !default;
-$radio-radius: 50% !default;
-$radio-size: $checkbox-size !default;
-$radio-offset-top: $checkbox-offset-top !default;
-$radio-bg: $checkbox-bg !default;
-$radio-label-indent: $checkbox-label-indent !default;
-$radio-fa: "\f111" !default;
-$radio-fa-size: $radio-size * 0.7 !default;
-$radio-fa-margin: calc(#{($radio-size - $radio-fa-size) * 0.5} + 2px) !default;
-$radio-fa-color: $checkbox-fa-color !default;
-$radio-cursor: $checkbox-cursor !default;
-$radio-error-color: $checkbox-error-color !default;
+// $radio-border: $checkbox-border !default;
+// $radio-radius: 50% !default;
+// $radio-size: $checkbox-size !default;
+// $radio-offset-top: $checkbox-offset-top !default;
+// $radio-bg: $checkbox-bg !default;
+// $radio-label-indent: $checkbox-label-indent !default;
+// $radio-fa-size: $radio-size * 0.7 !default;
+// $radio-fa-margin: calc(#{($radio-size - $radio-fa-size) * 0.5} + 2px) !default;
+// $radio-fa-color: $checkbox-fa-color !default;
+// $radio-cursor: $checkbox-cursor !default;
+// $radio-error-color: $checkbox-error-color !default;
 
-@mixin checkbox-or-radio(
-  $border,
-  $radius,
-  $size,
-  $offset-top,
-  $label-indent,
-  $bg,
-  $cursor,
-  $fa,
-  $fa-size,
-  $fa-margin,
-  $fa-color,
-  $error-color
-) {
-  position: absolute;
-  left: -9999px;
-  // + label {
-  // to handle sandwiched validation elements
-  ~ label {
-    position: relative;
-    display: inline-block;
-    padding-left: $size + $label-indent;
-    font-weight: normal;
-    text-transform: none;
-    cursor: $cursor;
-    user-select: none;
-    &::before,
-    &::after {
-      position: absolute;
-      top: $offset-top;
-      left: 0;
+// @mixin checkbox-or-radio(
+//   $border,
+//   $radius,
+//   $size,
+//   $offset-top,
+//   $label-indent,
+//   $bg,
+//   $cursor,
+//   $fa,
+//   $fa-size,
+//   $fa-margin,
+//   $fa-color,
+//   $error-color
+// ) {
+//   position: absolute;
+//   left: -9999px;
+//   // + label {
+//   // to handle sandwiched validation elements
+//   ~ label {
+//     position: relative;
+//     display: inline-block;
+//     padding-left: $size + $label-indent;
+//     font-weight: normal;
+//     text-transform: none;
+//     cursor: $cursor;
+//     user-select: none;
+//     &::before,
+//     &::after {
+//       position: absolute;
+//       top: $offset-top;
+//       left: 0;
+//       display: block;
+//       content: "";
+//     }
+//     &::before {
+//       width: $size;
+//       height: $size;
+//       vertical-align: middle;
+//       background: $bg;
+//       border: $border;
+//       border-radius: $radius;
+//     }
+//     &::after {
+//       margin: $fa-margin;
+//       font: normal normal normal 14px/1 FontAwesome;
+//       font-size: $fa-size;
+//       -moz-osx-font-smoothing: grayscale;
+//       -webkit-font-smoothing: antialiased;
+//       line-height: 1;
+//       color: $fa-color;
+//       text-rendering: auto;
+//     }
+//   }
+//   &:checked ~ label::after {
+//     content: $fa;
+//   }
+//   &.error ~ label::before {
+//     border-color: $error-color;
+//   }
+// }
+// .radio,
+// .checkbox {
+//   display: inline-block;
+// }
+// .checkbox input[type="checkbox"] {
+//   @include checkbox-or-radio(
+//     $border: $checkbox-border,
+//     $radius: $checkbox-radius,
+//     $size: $checkbox-size,
+//     $offset-top: $checkbox-offset-top,
+//     $bg: $checkbox-bg,
+//     $label-indent: $checkbox-label-indent,
+//     $cursor: $checkbox-cursor,
+//     $fa: $checkbox-fa,
+//     $fa-size: $checkbox-fa-size,
+//     $fa-margin: $checkbox-fa-margin,
+//     $fa-color: $checkbox-fa-color,
+//     $error-color: $checkbox-error-color
+//   );
+// }
+// .radio input[type="radio"] {
+//   // Same as a checkbox but, well, round.
+//   @include checkbox-or-radio(
+//     $border: $radio-border,
+//     $radius: $radio-radius,
+//     $size: $radio-size,
+//     $offset-top: $radio-offset-top,
+//     $bg: $radio-bg,
+//     $label-indent: $radio-label-indent,
+//     $cursor: $radio-cursor,
+//     $fa: $radio-fa,
+//     $fa-size: $radio-fa-size,
+//     $fa-margin: $radio-fa-margin,
+//     $fa-color: $radio-fa-color,
+//     $error-color: $radio-error-color
+//   );
+// }
+.checkbox,
+.radio {
+  input {
+    display: none;
+    + label {
+      position: relative;
+      padding-left: 30px;
+      &::before,
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      &::before {
+        border: 1px solid;
+      }
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        top: 2px;
+        left: 2px;
+        position: absolute;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: none;
+      }
+    }
+    &:checked + label::after {
       display: block;
-      content: "";
     }
+  }
+}
+.checkbox input:checked + label::after {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" fill="oliveDrab" /></svg>');
+}
+.radio {
+  input + label {
     &::before {
-      width: $size;
-      height: $size;
-      vertical-align: middle;
-      background: $bg;
-      border: $border;
-      border-radius: $radius;
+      border-radius: 50%;
     }
     &::after {
-      margin: $fa-margin;
-      font: normal normal normal 14px/1 FontAwesome;
-      font-size: $fa-size;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      line-height: 1;
-      color: $fa-color;
-      text-rendering: auto;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="oliveDrab" /></svg>');
+      background-size: 60%;
     }
   }
-  &:checked ~ label::after {
-    content: $fa;
-  }
-  &.error ~ label::before {
-    border-color: $error-color;
-  }
-}
-.radio,
-.checkbox {
-  display: inline-block;
-}
-.checkbox input[type="checkbox"] {
-  @include checkbox-or-radio(
-    $border: $checkbox-border,
-    $radius: $checkbox-radius,
-    $size: $checkbox-size,
-    $offset-top: $checkbox-offset-top,
-    $bg: $checkbox-bg,
-    $label-indent: $checkbox-label-indent,
-    $cursor: $checkbox-cursor,
-    $fa: $checkbox-fa,
-    $fa-size: $checkbox-fa-size,
-    $fa-margin: $checkbox-fa-margin,
-    $fa-color: $checkbox-fa-color,
-    $error-color: $checkbox-error-color
-  );
-}
-.radio input[type="radio"] {
-  // Same as a checkbox but, well, round.
-  @include checkbox-or-radio(
-    $border: $radio-border,
-    $radius: $radio-radius,
-    $size: $radio-size,
-    $offset-top: $radio-offset-top,
-    $bg: $radio-bg,
-    $label-indent: $radio-label-indent,
-    $cursor: $radio-cursor,
-    $fa: $radio-fa,
-    $fa-size: $radio-fa-size,
-    $fa-margin: $radio-fa-margin,
-    $fa-color: $radio-fa-color,
-    $error-color: $radio-error-color
-  );
 }
