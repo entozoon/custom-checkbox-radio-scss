@@ -36,8 +36,8 @@ $ccr-icon-scale-radio: 55% !default;
       &::after {
         content: "";
         display: inline-block;
-        width: calc($ccr-size - $ccr-border-width * 2);
-        height: calc($ccr-size - $ccr-border-width * 2);
+        width: calc(#{$ccr-size} - #{$ccr-border-width * 2});
+        height: calc(#{$ccr-size} - #{$ccr-border-width * 2});
         top: $ccr-border-width;
         left: $ccr-border-width;
         position: absolute;
