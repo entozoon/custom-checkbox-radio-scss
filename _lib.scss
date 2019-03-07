@@ -1,7 +1,6 @@
 @function svg-url($svg) {
   // Replace newlines. Can't write it any other way (because sass sucks)
-  $svg: str-replace($svg, "
-", "");
+  $svg: str-replace($svg, "\n", "");
   //  Chunk up string in order to avoid "stack level too deep" error
   $encoded: "";
   $slice: 2000;
