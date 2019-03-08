@@ -1,7 +1,9 @@
 // https://css-tricks.com/snippets/sass/str-replace-function/
-@function str-replace($string, $search, $replace: "") {
+@function str-replace($string, $search, $replace: "", $special: false) {
+  $indexOffset: if($special, -1, 0);
   $index: str-index($string, $search);
   @if $index {
+    $index: $index + $indexOffset;
     @return str-slice($string, 1, $index - 1) + $replace +
       str-replace(
         str-slice($string, $index + str-length($search)),
@@ -11,15 +13,26 @@
   }
   @return $string;
 }
+@function fuck-newlines($string) {
+  // $string: str-replace($string, "\a", "", false);
+  //   $string: str-replace($string, "
+  //", "");
+  // You know what, attempting to replace \a CSS style newlines is a fool's errand
+  // because it works for EITHER LF line endings (^false) or CR LF (true)
+  // and Macintosh CR is a lost cause entirely, plus \a is technically valid so leave it!
+  // If people have problems, recommend updating node-sass (^v4) and use LF EOLs
+  // AND, in this case we'll remove the line breaks regardless just in case
+  @return $string;
+}
 @function svg-url($svg) {
-  // Replace newlines. Can't write it any other way (because Sass kinda sucks)
-  $svg: str-replace($svg, "
-", "");
   //  Chunk up string in order to avoid "stack level too deep" error
   $encoded: "";
   $slice: 2000;
   $index: 0;
   $loops: ceil(str-length($svg) / $slice);
+  $svg: fuck-newlines($svg);
+  @debug $svg;
+  // @return $svg;
   @for $i from 1 through $loops {
     $chunk: str-slice($svg, $index, $index + $slice - 1);
     // Replace various things so as to encode SVG XML for CSS
@@ -30,13 +43,13 @@
     $chunk: str-replace($chunk, "}", "%7D");
     $chunk: str-replace($chunk, "<", "%3C");
     $chunk: str-replace($chunk, ">", "%3E");
-    // Minify all whitespace to a max of one character (HTML style)
-    @while (str-index($chunk, "  ") != null) {
-      $index: str-index($chunk, "  ");
-      $chunk: "#{str-slice($chunk, 0, $index - 1)} #{str-slice($chunk, $index + 2)}";
-    }
     $encoded: #{$encoded}#{$chunk};
     $index: $index + $slice;
+  }
+  // Minify all whitespace to a max of one character (HTML style)
+  @while (str-index($encoded, "  ") != null) {
+    $index: str-index($encoded, "  ");
+    $encoded: "#{str-slice($encoded, 0, $index - 1)} #{str-slice($encoded, $index + 2)}";
   }
   @return url("data:image/svg+xml,#{$encoded}");
 }
