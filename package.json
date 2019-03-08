@@ -1,7 +1,7 @@
 {
   "name": "custom-checkbox-radio-scss",
-  "version": "1.4.3",
-  "description": "Scss based custom checkboxes and radios; a CSS-only solution.",
+  "version": "1.4.4",
+  "description": "SCSS based custom checkboxes and radios; a no-JS solution.",
   "main": "custom-checkbox-radio.scss",
   "keywords": [
     "checkbox",

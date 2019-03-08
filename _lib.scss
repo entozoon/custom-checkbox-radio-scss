@@ -1,5 +1,18 @@
+// https://css-tricks.com/snippets/sass/str-replace-function/
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+  @return $string;
+}
 @function svg-url($svg) {
-  // Replace newlines. Can't write it any other way (because sass sucks)
+  // Replace newlines. Can't write it any other way (because Sass kinda sucks)
   $svg: str-replace($svg, "
 ", "");
   //  Chunk up string in order to avoid "stack level too deep" error
@@ -9,6 +22,7 @@
   $loops: ceil(str-length($svg) / $slice);
   @for $i from 1 through $loops {
     $chunk: str-slice($svg, $index, $index + $slice - 1);
+    // Replace various things so as to encode SVG XML for CSS
     $chunk: str-replace($chunk, '"', "'");
     $chunk: str-replace($chunk, "%", "%25");
     $chunk: str-replace($chunk, "#", "%23");
@@ -16,6 +30,11 @@
     $chunk: str-replace($chunk, "}", "%7D");
     $chunk: str-replace($chunk, "<", "%3C");
     $chunk: str-replace($chunk, ">", "%3E");
+    // Minify all whitespace to a max of one character (HTML style)
+    @while (str-index($chunk, "  ") != null) {
+      $index: str-index($chunk, "  ");
+      $chunk: "#{str-slice($chunk, 0, $index - 1)} #{str-slice($chunk, $index + 2)}";
+    }
     $encoded: #{$encoded}#{$chunk};
     $index: $index + $slice;
   }
