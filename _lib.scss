@@ -13,26 +13,30 @@
   }
   @return $string;
 }
-@function fuck-newlines($string) {
-  // $string: str-replace($string, "\a", "", false);
-  //   $string: str-replace($string, "
-  //", "");
-  // You know what, attempting to replace \a CSS style newlines is a fool's errand
-  // because it works for EITHER LF line endings (^false) or CR LF (true)
-  // and Macintosh CR is a lost cause entirely, plus \a is technically valid so leave it!
-  // If people have problems, recommend updating node-sass (^v4) and use LF EOLs
-  // AND, in this case we'll remove the line breaks regardless just in case
-  @return $string;
-}
+//
+// svg-url
+// Encode SVG XML into as CSS-friendly format
+// (requires str-replace, above)
+//
+// Usage, on content or background-image:
+//   content: svg-url(
+//     '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+//      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+//      width="100%" viewBox="0 0 160 160">
+//       <circle cx="80" cy="80" r="80" fill="red" />
+//     </svg>'
+//   );
+//
+// Works for EITHER LF line endings or CR LF (Macintosh CR is a lost cause, sorry)
+// If people have problems, recommend updating node-sass (^v4), using LF EOLs,
+// or failing that, just remove all linebreaks in the svg.
+//
 @function svg-url($svg) {
-  //  Chunk up string in order to avoid "stack level too deep" error
+  // Chunk up string in order to avoid "stack level too deep" error
   $encoded: "";
   $slice: 2000;
   $index: 0;
   $loops: ceil(str-length($svg) / $slice);
-  $svg: fuck-newlines($svg);
-  @debug $svg;
-  // @return $svg;
   @for $i from 1 through $loops {
     $chunk: str-slice($svg, $index, $index + $slice - 1);
     // Replace various things so as to encode SVG XML for CSS
