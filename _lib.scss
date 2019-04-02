@@ -1,9 +1,19 @@
-// https://css-tricks.com/snippets/sass/str-replace-function/
+//
+// SVG Sass
+// https://github.com/entozoon/svg-sass
+// (Pasted rather than imported, as transient packages aren't doable yet)
+//
+
+//
+// SVG Libraries
+//
+// str-replace
+// via https://css-tricks.com/snippets/sass/str-replace-function/
 @function str-replace($string, $search, $replace: "", $special: false) {
-  $indexOffset: if($special, -1, 0);
+  $index-offset: if($special, -1, 0);
   $index: str-index($string, $search);
   @if $index {
-    $index: $index + $indexOffset;
+    $index: $index + $index-offset;
     @return str-slice($string, 1, $index - 1) + $replace +
       str-replace(
         str-slice($string, $index + str-length($search)),
@@ -13,26 +23,39 @@
   }
   @return $string;
 }
-//
-// svg-url
+
+// SVG
 // Encode SVG XML into as CSS-friendly format
 // (requires str-replace, above)
 //
-// Usage, on content or background-image:
-//   content: svg-url(
-//     '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+// Usage, for content or background-image:
+//   .foo {
+//     content: svg('<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
 //      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 //      width="100%" viewBox="0 0 160 160">
 //       <circle cx="80" cy="80" r="80" fill="red" />
 //     </svg>'
 //   );
 //
-// Works for EITHER LF line endings or CR LF (Macintosh CR is a lost cause, sorry)
-// If people have problems, recommend updating node-sass (^v4), using LF EOLs,
-// or failing that, just remove all linebreaks in the svg.
-//
-@function svg-url($svg) {
-  // Chunk up string in order to avoid "stack level too deep" error
+@function svg($svg) {
+  @if not function-exists(str-replace) {
+    @error "You are missing the utility function 'str-replace', please copy it from somewhere!";
+  }
+
+  // Reveal the newlines characters! Turns our they're \a
+  // $thinking: _split($svg, " ");
+  // @debug $thinking;
+
+  // Replace naughty newlines with spaces (LF encoding, at least)
+  $svg: str-replace($svg, "\a", " ");
+
+  // Minify all whitespace to a max of one character (HTML style)
+  @while (str-index($svg, "  ") != null) {
+    $index: str-index($svg, "  ");
+    $svg: "#{str-slice($svg, 0, $index - 1)} #{str-slice($svg, $index + 2)}";
+  }
+
+  // Encode into %3Csvg%20xmlns...
   $encoded: "";
   $slice: 2000;
   $index: 0;
@@ -50,10 +73,15 @@
     $encoded: #{$encoded}#{$chunk};
     $index: $index + $slice;
   }
-  // Minify all whitespace to a max of one character (HTML style)
-  @while (str-index($encoded, "  ") != null) {
-    $index: str-index($encoded, "  ");
-    $encoded: "#{str-slice($encoded, 0, $index - 1)} #{str-slice($encoded, $index + 2)}";
-  }
+
+  // @debug $encoded;
   @return url("data:image/svg+xml,#{$encoded}");
+}
+
+//
+// SVG Mixin
+// Shorthand for function above. Applies to content by default
+//
+@mixin svg($svg, $attribute: content) {
+  #{$attribute}: svg($svg);
 }

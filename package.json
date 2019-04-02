@@ -22,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/entozoon/custom-checkbox-radio-scss/issues"
   },
-  "homepage": "https://github.com/entozoon/custom-checkbox-radio-scss#readme"
+  "homepage": "https://github.com/entozoon/custom-checkbox-radio-scss#readme",
+  "dependencies": {}
 }
