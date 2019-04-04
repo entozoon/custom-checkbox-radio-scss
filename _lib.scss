@@ -10,6 +10,7 @@
 // str-replace
 // Modified from https://css-tricks.com/snippets/sass/str-replace-function/
 @function str-replace($string, $search, $replace: "", $special: false) {
+  // NB: $special doesn't work for CRLF so yeah, don't
   $index-offset: if($special, -1, 0);
   $index: str-index($string, $search);
   @if $index {
@@ -48,8 +49,11 @@
   // $thinking: _split($svg, " ");
   // @debug $thinking;
 
-  // Replace naughty newlines with spaces (LF encoding, at least)
-  $svg: str-replace($svg, "\a", " ", true);
+  // Replace naughty newlines with spaces
+  // LF encoding yields \a
+  $svg: str-replace($svg, "\a", " ");
+  // CRLF encoding yields \d (How did I know? Tried every damn char is how)
+  $svg: str-replace($svg, "\d", " ");
 
   // Minify all whitespace to a max of one character (HTML style)
   @while (str-index($svg, "  ") != null) {
