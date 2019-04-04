@@ -8,7 +8,7 @@
 // SVG Libraries
 //
 // str-replace
-// via https://css-tricks.com/snippets/sass/str-replace-function/
+// Modified from https://css-tricks.com/snippets/sass/str-replace-function/
 @function str-replace($string, $search, $replace: "", $special: false) {
   $index-offset: if($special, -1, 0);
   $index: str-index($string, $search);
@@ -23,6 +23,9 @@
   }
   @return $string;
 }
+// Debug thinking only:
+// npm i sassdash
+// @import "./node_modules/sassdash/index";
 
 // SVG
 // Encode SVG XML into as CSS-friendly format
@@ -31,7 +34,6 @@
 // Usage, for content or background-image:
 //   .foo {
 //     content: svg('<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-//      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 //      width="100%" viewBox="0 0 160 160">
 //       <circle cx="80" cy="80" r="80" fill="red" />
 //     </svg>'
@@ -39,15 +41,15 @@
 //
 @function svg($svg) {
   @if not function-exists(str-replace) {
-    @error "You are missing the utility function 'str-replace', please copy it from somewhere!";
+    @error "You are missing the utility function 'str-replace', please copy it in!";
   }
 
-  // Reveal the newlines characters! Turns our they're \a
+  // Reveal the newlines characters (requires sassdash)! Turns out they're generally \a
   // $thinking: _split($svg, " ");
   // @debug $thinking;
 
   // Replace naughty newlines with spaces (LF encoding, at least)
-  $svg: str-replace($svg, "\a", " ");
+  $svg: str-replace($svg, "\a", " ", true);
 
   // Minify all whitespace to a max of one character (HTML style)
   @while (str-index($svg, "  ") != null) {
