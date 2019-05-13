@@ -1,3 +1,12 @@
+.checkbox *,
+.checkbox ::before,
+.checkbox ::after,
+.radio *,
+.radio ::before,
+.radio ::after {
+  box-sizing: border-box;
+}
+
 .checkbox input,
 .radio input {
   display: none;
@@ -5,22 +14,22 @@
 
 .checkbox input ~ label,
 .radio input ~ label {
-  display: inline-block;
   position: relative;
+  display: inline-block;
+  min-height: 1em;
   padding-left: 2em;
   line-height: 1;
-  user-select: none;
-  cursor: pointer;
   vertical-align: middle;
-  min-height: 1em;
+  cursor: pointer;
+  user-select: none;
 }
 
 .checkbox input ~ label::before, .checkbox input ~ label::after,
 .radio input ~ label::before,
 .radio input ~ label::after {
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -29,23 +38,22 @@
 
 .checkbox input ~ label::before,
 .radio input ~ label::before {
+  background: transparent;
   border: 1px solid;
   border-color: black;
-  background: transparent;
 }
 
 .checkbox input ~ label::after,
 .radio input ~ label::after {
-  content: "";
-  display: inline-block;
-  width: calc(1em + 2px);
-  height: calc(1em + 2px);
+  position: absolute;
   top: 0px;
   left: 0px;
-  position: absolute;
+  display: none;
+  width: calc(1em);
+  height: calc(1em);
   background-repeat: no-repeat;
   background-size: cover;
-  display: none;
+  content: "";
 }
 
 .checkbox input:checked ~ label::after,
@@ -59,8 +67,8 @@
 
 .checkbox input ~ label::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='black' /%3E%3C/svg%3E");
-  background-size: 70%;
   background-position: 49% 49%;
+  background-size: 70%;
 }
 
 .radio input ~ label::before {
@@ -69,8 +77,8 @@
 
 .radio input ~ label::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='black' /%3E%3C/svg%3E");
-  background-size: 45%;
   background-position: center;
+  background-size: 45%;
 }
 
 html {

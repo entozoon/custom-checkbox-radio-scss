@@ -14,36 +14,40 @@ SCSS based custom checkboxes and radios; a CSS-only solution.
 
 Depending on your current directory and frontend stack, you'll want something along the lines of one of:
 
-    @import '../node_modules/custom-checkbox-radio-scss/custom-checkbox-radio';
-    @import '~custom-checkbox-radio-scss/custom-checkbox-radio'; // (webpack 3)
+```scss
+@import "../node_modules/custom-checkbox-radio-scss/custom-checkbox-radio";
+@import "~custom-checkbox-radio-scss/custom-checkbox-radio"; // (webpack 3+)
+```
 
 ## Add
 
 Note, your labels must proceed the inputs and all have suitable name/id/for attributes.
 
-    <fieldset>
-      <legend>Checkboxes</legend>
-      <p class="checkbox">
-        <input type="checkbox" name="lorem-1" id="lorem-1">
+```html
+<fieldset>
+    <legend>Checkboxes</legend>
+    <p class="checkbox">
+        <input type="checkbox" name="lorem-1" id="lorem-1" />
         <label for="lorem-1">Lorem</label>
-      </p>
-      <p class="checkbox">
-        <input type="checkbox" name="lorem-2" id="lorem-2">
+    </p>
+    <p class="checkbox">
+        <input type="checkbox" name="lorem-2" id="lorem-2" />
         <label for="lorem-2">Ipsum</label>
-      </p>
-    </fieldset>
+    </p>
+</fieldset>
 
-    <fieldset>
-      <legend>Radios</legend>
-      <p class="radio">
-        <input type="radio" name="ipsum" id="ipsum-1" checked>
+<fieldset>
+    <legend>Radios</legend>
+    <p class="radio">
+        <input type="radio" name="ipsum" id="ipsum-1" checked />
         <label for="ipsum-1">Lorem</label>
-      </p>
-      <p class="radio">
-        <input type="radio" name="ipsum" id="ipsum-2">
+    </p>
+    <p class="radio">
+        <input type="radio" name="ipsum" id="ipsum-2" />
         <label for="ipsum-2">Ipsum</label>
-      </p>
-    </fieldset>
+    </p>
+</fieldset>
+```
 
 ## Customise
 
