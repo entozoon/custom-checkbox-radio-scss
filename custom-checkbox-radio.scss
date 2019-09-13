@@ -7,7 +7,6 @@ $ccr-border-width: 1px !default;
 $ccr-border-radius-checkbox: 2px !default;
 $ccr-icon-scale-checkbox: 70% !default;
 $ccr-icon-scale-radio: 45% !default;
-$ccr-label-padding: 1em !default;
 @import "./lib";
 .checkbox,
 .radio {
@@ -19,70 +18,51 @@ $ccr-label-padding: 1em !default;
   input {
     display: none;
     ~ label {
-      position: relative;
-      display: inline-block;
-      min-height: $ccr-size;
-      padding-left: $ccr-size + $ccr-label-padding;
-      line-height: 1;
-      vertical-align: middle;
+      display: flex;
+      line-height: 1.1;
       cursor: pointer;
       user-select: none;
-      &::before,
-      &::after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: inline-block;
+      &::before {
+        content: "";
         width: $ccr-size;
         height: $ccr-size;
-        content: "";
         // outline: 1px solid; // **** Debugging ****
-      }
-      &::before {
-        background: $ccr-background;
-        border: $ccr-border-width solid;
-        border-color: $ccr-color-outer;
-      }
-      &::after {
-        position: absolute;
-        top: $ccr-border-width - $ccr-border-width;
-        left: $ccr-border-width - $ccr-border-width;
-        display: none;
-        width: calc(#{$ccr-size}); // + #{$ccr-border-width * 2});
-        height: calc(#{$ccr-size}); // + #{$ccr-border-width * 2});
+        background-color: $ccr-background;
+        border: $ccr-border-width solid $ccr-color-outer;
+        background-position: center;
         background-repeat: no-repeat;
-        background-size: cover;
-        content: "";
+        flex-shrink: 0;
+        margin-right: 0.5em;
+        transform: translateY(-15%);
       }
-    }
-    &:checked ~ label::after {
-      display: block;
     }
   }
 }
 // Checkbox-specific
-.checkbox input ~ label {
-  &::before {
-    border-radius: $ccr-border-radius-checkbox;
+.checkbox input {
+  ~ label {
+    &::before {
+      border-radius: $ccr-border-radius-checkbox;
+    }
   }
-  &::after {
+  &:checked ~ label::before {
     background-image: svg(
       "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#{$ccr-color-inner}' /></svg>"
     );
-    background-position: 49% 49%;
     background-size: $ccr-icon-scale-checkbox $ccr-icon-scale-checkbox;
   }
 }
 // Radio-specific
-.radio input ~ label {
-  &::before {
-    border-radius: 50%;
+.radio input {
+  ~ label {
+    &::before {
+      border-radius: 50%;
+    }
   }
-  &::after {
+  &:checked & {
     background-image: svg(
       "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='#{$ccr-color-inner}' /></svg>"
     );
-    background-position: center;
     background-size: $ccr-icon-scale-radio $ccr-icon-scale-radio;
   }
 }
