@@ -2,7 +2,7 @@
 $ccr-size: 1em !default;
 $ccr-color-outer: black !default;
 $ccr-color-inner: black !default;
-$ccr-background: transparent !default;
+$ccr-background: #fff !default;
 $ccr-border-width: 1px !default;
 $ccr-border-radius-checkbox: 2px !default;
 $ccr-icon-scale-checkbox: 70% !default;
@@ -59,7 +59,7 @@ $ccr-icon-scale-radio: 45% !default;
       border-radius: 50%;
     }
   }
-  &:checked & {
+  &:checked ~ label::before {
     background-image: svg(
       "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='#{$ccr-color-inner}' /></svg>"
     );
