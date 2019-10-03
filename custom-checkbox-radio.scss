@@ -28,7 +28,8 @@ $ccr-icon-scale-radio: 45% !default;
         height: $ccr-size;
         // outline: 1px solid; // **** Debugging ****
         background-color: $ccr-background;
-        border: $ccr-border-width solid $ccr-color-outer;
+        // box-shadow doesn't mess with the position of the background-image, unlike border
+        box-shadow: 0 0 0 $ccr-border-width $ccr-color-outer;
         background-position: center;
         background-repeat: no-repeat;
         flex-shrink: 0;
