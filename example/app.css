@@ -41,6 +41,17 @@
   transform: translateY(-15%);
 }
 
+.checkbox input ~ label a,
+.radio input ~ label a {
+  margin-right: 0.3em;
+  margin-left: 0.3em;
+}
+
+.checkbox input:focus ~ label::before,
+.radio input:focus ~ label::before {
+  box-shadow: 0 0 0 2px black;
+}
+
 .checkbox input ~ label::before {
   border-radius: 2px;
 }
