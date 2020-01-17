@@ -46,8 +46,8 @@ $ccr-icon-scale-radio: 45% !default;
       // Nested inline elements won't render their whitespace,
       // what with it being flexed as a henchman so work around it:
       a {
-        margin-right: .3em
-        margin-left: .3em
+        margin-right: 0.3em;
+        margin-left: 0.3em;
       }
     }
   }
