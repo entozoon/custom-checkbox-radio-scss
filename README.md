@@ -15,8 +15,7 @@ SCSS based custom checkboxes and radios; a CSS-only solution.
 Depending on your current directory and frontend stack, you'll want something along the lines of one of:
 
 ```scss
-@import "../node_modules/custom-checkbox-radio-scss/custom-checkbox-radio";
-@import "~custom-checkbox-radio-scss/custom-checkbox-radio"; // (webpack 3+)
+@import "custom-checkbox-radio";
 ```
 
 ## Add
