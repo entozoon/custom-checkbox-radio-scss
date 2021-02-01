@@ -15,7 +15,7 @@ SCSS based custom checkboxes and radios; a CSS-only solution.
 Depending on your current directory and frontend stack, you'll want something along the lines of one of:
 
 ```scss
-@import "custom-checkbox-radio";
+@import "custom-checkbox-radio-scss";
 ```
 
 ## Add
