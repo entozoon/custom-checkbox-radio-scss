@@ -1,6 +1,7 @@
 // Overrideable variables
 $ccr-size: 1em !default;
 $ccr-color-outer: black !default;
+$ccr-color-outer-focus: $ccr-color-outer !default;
 $ccr-color-inner: black !default;
 $ccr-background: #fff !default;
 $ccr-border-width: 1px !default;
@@ -52,7 +53,7 @@ $ccr-icon-scale-radio: 45% !default;
       }
     }
     &:focus ~ label::before {
-      box-shadow: 0 0 0 $ccr-border-width-focus $ccr-color-outer;
+      box-shadow: 0 0 0 $ccr-border-width-focus $ccr-color-outer-focus;
     }
   }
 }
