@@ -56,7 +56,7 @@ $ccr-icon-scale-radio: 45% !default;
     &:focus ~ label::before {
       box-shadow: 0 0 0 $ccr-border-width-focus $ccr-color-outer;
     }
-    &:focus ~ label::before {
+    &:checked ~ label::before {
       background-color: $ccr-background-checked;
       box-shadow: 0 0 0 $ccr-border-width $ccr-color-outer-checked;
     }
