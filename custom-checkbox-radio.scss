@@ -4,6 +4,7 @@ $ccr-color-outer: black !default;
 $ccr-color-outer-checked: $ccr-color-outer !default;
 $ccr-color-inner: black !default;
 $ccr-background: #fff !default;
+$ccr-background-checked: $ccr-background !default;
 $ccr-border-width: 1px !default;
 $ccr-border-width-focus: $ccr-border-width + 1px !default;
 $ccr-border-radius-checkbox: 2px !default;
@@ -55,6 +56,10 @@ $ccr-icon-scale-radio: 45% !default;
     &:focus ~ label::before {
       box-shadow: 0 0 0 $ccr-border-width-focus $ccr-color-outer;
     }
+    &:focus ~ label::before {
+      background-color: $ccr-background-checked;
+      box-shadow: 0 0 0 $ccr-border-width $ccr-color-outer-checked;
+    }
   }
 }
 // Checkbox-specific
@@ -69,7 +74,6 @@ $ccr-icon-scale-radio: 45% !default;
       "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#{$ccr-color-inner}' /></svg>"
     );
     background-size: $ccr-icon-scale-checkbox $ccr-icon-scale-checkbox;
-    box-shadow: 0 0 0 $ccr-border-width $ccr-color-outer-checked;
   }
 }
 // Radio-specific
@@ -84,6 +88,5 @@ $ccr-icon-scale-radio: 45% !default;
       "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='#{$ccr-color-inner}' /></svg>"
     );
     background-size: $ccr-icon-scale-radio $ccr-icon-scale-radio;
-    box-shadow: 0 0 0 $ccr-border-width $ccr-color-outer-checked;
   }
 }
