@@ -1,18 +1,7 @@
-// Overrideable variables
-$ccr-size: 1em !default;
-$ccr-color-outer: black !default;
-$ccr-color-outer-checked: $ccr-color-outer !default;
-$ccr-color-inner: black !default;
-$ccr-background: #fff !default;
-$ccr-background-checked: $ccr-background !default;
-$ccr-border-width: 1px !default;
-$ccr-border-width-focus: $ccr-border-width + 1px !default;
-$ccr-border-radius-checkbox: 2px !default;
-$ccr-icon-scale-checkbox: 70% !default;
-$ccr-icon-scale-radio: 45% !default;
-@import "./lib";
-.checkbox,
-.radio {
+// main.scss
+@use "./variables";
+@use "./lib" as *;
+@mixin checkbox-radio {
   *,
   ::before,
   ::after {
@@ -34,12 +23,11 @@ $ccr-icon-scale-radio: 45% !default;
       user-select: none;
       &::before {
         content: "";
-        width: $ccr-size;
-        height: $ccr-size;
-        // outline: 1px solid; // **** Debugging ****
-        background-color: $ccr-background;
+        width: variables.$ccr-size;
+        height: variables.$ccr-size;
+        background-color: variables.$ccr-background;
         // box-shadow doesn't mess with the position of the background-image, unlike border
-        box-shadow: 0 0 0 $ccr-border-width $ccr-color-outer;
+        box-shadow: 0 0 0 variables.$ccr-border-width variables.$ccr-color-outer;
         background-position: center;
         background-repeat: no-repeat;
         flex-shrink: 0;
@@ -54,39 +42,47 @@ $ccr-icon-scale-radio: 45% !default;
       }
     }
     &:focus ~ label::before {
-      box-shadow: 0 0 0 $ccr-border-width-focus $ccr-color-outer;
+      box-shadow: 0 0 0 variables.$ccr-border-width-focus
+        variables.$ccr-color-outer;
     }
     &:checked ~ label::before {
-      background-color: $ccr-background-checked;
-      box-shadow: 0 0 0 $ccr-border-width $ccr-color-outer-checked;
+      background-color: variables.$ccr-background-checked;
+      box-shadow: 0 0 0 variables.$ccr-border-width
+        variables.$ccr-color-outer-checked;
     }
   }
 }
-// Checkbox-specific
-.checkbox input {
-  ~ label {
-    &::before {
-      border-radius: $ccr-border-radius-checkbox;
+@mixin checkbox {
+  @include checkbox-radio;
+  input {
+    ~ label {
+      &::before {
+        border-radius: variables.$ccr-border-radius-checkbox;
+      }
     }
-  }
-  &:checked ~ label::before {
-    background-image: svg(
-      "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#{$ccr-color-inner}' /></svg>"
-    );
-    background-size: $ccr-icon-scale-checkbox $ccr-icon-scale-checkbox;
+    &:checked ~ label::before {
+      background-image: svg(
+        "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#{variables.$ccr-color-inner}' /></svg>"
+      );
+      background-size: variables.$ccr-icon-scale-checkbox
+        variables.$ccr-icon-scale-checkbox;
+    }
   }
 }
-// Radio-specific
-.radio input {
-  ~ label {
-    &::before {
-      border-radius: 50%;
+@mixin radio {
+  @include checkbox-radio;
+  input {
+    ~ label {
+      &::before {
+        border-radius: 50%;
+      }
     }
-  }
-  &:checked ~ label::before {
-    background-image: svg(
-      "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='#{$ccr-color-inner}' /></svg>"
-    );
-    background-size: $ccr-icon-scale-radio $ccr-icon-scale-radio;
+    &:checked ~ label::before {
+      background-image: svg(
+        "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='#{variables.$ccr-color-inner}' /></svg>"
+      );
+      background-size: variables.$ccr-icon-scale-radio
+        variables.$ccr-icon-scale-radio;
+    }
   }
 }

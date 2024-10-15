@@ -1,8 +1,8 @@
 {
   "name": "custom-checkbox-radio-scss",
-  "version": "1.10.1",
+  "version": "2.0.0",
   "description": "SCSS based custom checkboxes and radios; a no-JS solution.",
-  "main": "custom-checkbox-radio.scss",
+  "main": "index.scss",
   "keywords": [
     "checkbox",
     "radio",
@@ -23,5 +23,7 @@
     "url": "https://github.com/entozoon/custom-checkbox-radio-scss/issues"
   },
   "homepage": "https://github.com/entozoon/custom-checkbox-radio-scss#readme",
-  "dependencies": {}
+  "dependencies": {
+    "svg-sass": "^2.0.0"
+  }
 }

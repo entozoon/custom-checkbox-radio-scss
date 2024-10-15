@@ -22,6 +22,8 @@ Depending on your current directory and frontend stack, you'll want something al
 
 Note, your labels must proceed the inputs and all have suitable name/id/for attributes.
 
+NOTE THIS IS WRONG AND NEEDS UPDATING.::::
+
 ```html
 <fieldset>
     <legend>Checkboxes</legend>
