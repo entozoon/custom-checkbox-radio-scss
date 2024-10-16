@@ -23,16 +23,16 @@
       user-select: none;
       &::before {
         content: "";
-        width: variables.$ccr-size;
-        height: variables.$ccr-size;
-        background-color: variables.$ccr-background;
+        width: variables.$size;
+        height: variables.$size;
+        background-color: variables.$background;
         // box-shadow doesn't mess with the position of the background-image, unlike border
-        box-shadow: 0 0 0 variables.$ccr-border-width variables.$ccr-color-outer;
+        box-shadow: 0 0 0 variables.$border-width variables.$color-outer;
         background-position: center;
         background-repeat: no-repeat;
         flex-shrink: 0;
         margin-right: 0.5em;
-        transform: translateY(-15%);
+        transform: translateY(variables.$offset-y);
       }
       // Nested inline elements won't render their whitespace,
       // what with it being flexed as a henchman so work around it:
@@ -42,13 +42,11 @@
       }
     }
     &:focus ~ label::before {
-      box-shadow: 0 0 0 variables.$ccr-border-width-focus
-        variables.$ccr-color-outer;
+      box-shadow: 0 0 0 variables.$border-width-focus variables.$color-outer;
     }
     &:checked ~ label::before {
-      background-color: variables.$ccr-background-checked;
-      box-shadow: 0 0 0 variables.$ccr-border-width
-        variables.$ccr-color-outer-checked;
+      background-color: variables.$background-checked;
+      box-shadow: 0 0 0 variables.$border-width variables.$color-outer-checked;
     }
   }
 }
@@ -57,15 +55,15 @@
   input {
     ~ label {
       &::before {
-        border-radius: variables.$ccr-border-radius-checkbox;
+        border-radius: variables.$border-radius-checkbox;
       }
     }
     &:checked ~ label::before {
       background-image: svg(
-        "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#{variables.$ccr-color-inner}' /></svg>"
+        "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#{variables.$color-inner}' /></svg>"
       );
-      background-size: variables.$ccr-icon-scale-checkbox
-        variables.$ccr-icon-scale-checkbox;
+      background-size: variables.$icon-scale-checkbox
+        variables.$icon-scale-checkbox;
     }
   }
 }
@@ -79,10 +77,9 @@
     }
     &:checked ~ label::before {
       background-image: svg(
-        "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='#{variables.$ccr-color-inner}' /></svg>"
+        "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='#{variables.$color-inner}' /></svg>"
       );
-      background-size: variables.$ccr-icon-scale-radio
-        variables.$ccr-icon-scale-radio;
+      background-size: variables.$icon-scale-radio variables.$icon-scale-radio;
     }
   }
 }

@@ -24,7 +24,7 @@ Note, your labels must proceed the inputs and all have suitable name/id/for attr
 
 ````scss
 @use 'custom-checkbox-radio-scss/variables' with (
-  $ccr-background: #f00 // Override any variables
+  $background: #f00 // Override any variables
 );
 @use 'custom-checkbox-radio-scss' as ccr;
 @use 'custom-checkbox-radio-scss' as ccr;
