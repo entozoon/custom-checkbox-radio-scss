@@ -18,7 +18,7 @@
     border: 0;
     ~ label {
       display: flex;
-      line-height: 1.1;
+      line-height: variables.$line-height;
       cursor: pointer;
       user-select: none;
       &::before {
