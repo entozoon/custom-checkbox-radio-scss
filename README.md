@@ -23,6 +23,10 @@ Depending on your current directory and frontend stack, you'll want something al
 Note, your labels must proceed the inputs and all have suitable name/id/for attributes.
 
 ````scss
+@use 'custom-checkbox-radio-scss/variables' with (
+  $ccr-background: #f00 // Override any variables
+);
+@use 'custom-checkbox-radio-scss' as ccr;
 @use 'custom-checkbox-radio-scss' as ccr;
 .checkbox {
   @include ccr.checkbox;
@@ -67,7 +71,7 @@ import formControlStyles from "../formControl.module.scss";
 
 ## Customise
 
-Written in a non-invasive kinda way, so you can add your own styles to, say, `input[type="radio"] + label::after`, or simply override the various variables set in [the SCSS file](https://github.com/entozoon/custom-checkbox-radio-scss/blob/master/custom-checkbox-radio.scss).
+Written in a non-invasive kinda way, so you can add your own styles to, say, `input[type="radio"] + label::after`, or simply override the various variables set in [the SCSS file](https://github.com/entozoon/custom-checkbox-radio-scss/blob/master/_variables_.scss).
 
 ## Browser Support
 
