@@ -39,6 +39,10 @@
       a {
         margin-right: 0.3em;
         margin-left: 0.3em;
+        // Here we fuckin gooooooooo
+        + a {
+          margin-left: 0;
+        }
       }
     }
     &:focus ~ label::before {
